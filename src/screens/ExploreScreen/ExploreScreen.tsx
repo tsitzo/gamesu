@@ -1,15 +1,14 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { HomeScreen } from "./src/screens";
 
 interface Props {}
 
-const App = (props: Props) => {
+const ExploreScreen = (props: Props) => {
   return (
     <View>
-      <HomeScreen />
+      <Text>ExploreScreen</Text>
     </View>
   );
 };
 
-export default App;
+export default ExploreScreen;
