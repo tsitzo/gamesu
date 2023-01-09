@@ -5,16 +5,17 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { FC } from "react";
 
 import { styles } from "./styles";
 import { useQuery } from "@tanstack/react-query";
 import { Game } from "../../types/api";
 import { API_KEY } from "@env";
 import { BASE_URL, currentDate, lastYear } from "../../utils/api";
-import { SafeArea, Typography } from "../../components";
+import { SafeArea, Typography, GameTile, Spacer } from "../../components";
 import { useTheme } from "@react-navigation/native";
-import { GameTile } from "../../components/GameTile";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AppStackParams } from "../../types/navigation";
 interface Props {}
 
 interface IResponse {
@@ -22,7 +23,11 @@ interface IResponse {
   next: string;
 }
 
-const HomeScreen = (props: Props) => {
+interface IHomeScreenProps {
+  navigation: NativeStackNavigationProp<AppStackParams, "AppTabs">;
+}
+
+const HomeScreen: FC<IHomeScreenProps> = ({ navigation }) => {
   const { colors } = useTheme();
 
   const gamesApi = {
@@ -35,16 +40,16 @@ const HomeScreen = (props: Props) => {
 
     fetchNewGames: () =>
       fetch(
-        `${BASE_URL}/games?key=${API_KEY}&dates=${lastYear},${currentDate}&ordering=-release`
+        `${BASE_URL}/games?key=${API_KEY}&dates=${lastYear},${currentDate}&ordering=-released`
       ).then((res) => {
         return res.json();
       }),
   };
   const {
-    data: upcomingGames,
+    data: popularGames,
     isLoading,
     isError,
-  } = useQuery<IResponse | null>(["upcomingGames"], gamesApi.fetchPopularGames);
+  } = useQuery<IResponse | null>(["popularGames"], gamesApi.fetchPopularGames);
 
   const { data: newGames } = useQuery<IResponse | null>(
     ["newGames"],
@@ -71,11 +76,26 @@ const HomeScreen = (props: Props) => {
 
   return (
     <SafeArea>
+      <View>
+        <Spacer y={20} />
+        <View style={styles.row}>
+          <Typography variant="bold" size={22}>
+            Popular
+          </Typography>
+          <Typography color="primary" size={16} onPress={() => {}}>
+            See More
+          </Typography>
+        </View>
+      </View>
+
       <FlatList
         horizontal
-        data={upcomingGames?.results}
+        data={popularGames?.results}
         renderItem={({ item, index }) => (
           <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("GameDetailsScreen", { id: item.id })
+            }
             style={[
               styles.gameTileWrapper,
               { marginLeft: index === 0 ? 10 : 0 },
@@ -86,11 +106,26 @@ const HomeScreen = (props: Props) => {
         )}
       />
 
+      <View>
+        <Spacer y={20} />
+        <View style={styles.row}>
+          <Typography variant="bold" size={22}>
+            New Releases
+          </Typography>
+          <Typography color="primary" size={16} onPress={() => {}}>
+            See More
+          </Typography>
+        </View>
+      </View>
+
       <FlatList
         horizontal
         data={newGames?.results}
         renderItem={({ item, index }) => (
           <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("GameDetailsScreen", { id: item.id })
+            }
             style={[
               styles.gameTileWrapper,
               { marginLeft: index === 0 ? 10 : 0 },

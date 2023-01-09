@@ -9,6 +9,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
     case 2:
@@ -18,6 +19,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -28,6 +30,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -38,6 +41,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -48,6 +52,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -57,6 +62,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           name="linux"
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
           color={color}
         />
       );
@@ -67,6 +73,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -77,6 +84,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -87,6 +95,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -97,6 +106,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -107,6 +117,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -117,6 +128,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -127,6 +139,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 
@@ -137,6 +150,7 @@ export const getPlatformIcon = (id: number, color: string, size: number) => {
           color={color}
           size={size}
           style={{ marginRight: 3 }}
+          key={id}
         />
       );
 

@@ -27,7 +27,7 @@ const GameTile: FC<IGameTileProps> = ({ game }) => {
             <ActivityIndicator color={colors.primary} />
           </View>
         )}
-        {game.background_image ? (
+        {game.background_image !== "" ? (
           <Image
             resizeMode="cover"
             source={{
@@ -56,9 +56,10 @@ const GameTile: FC<IGameTileProps> = ({ game }) => {
             {dayjs(game.released).format("DD MMM YYYY")}
           </Typography>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            {game.parent_platforms.map((el) =>
-              getPlatformIcon(el.platform.id, colors.subtext, 12)
-            )}
+            {game.parent_platforms &&
+              game.parent_platforms.map((el) =>
+                getPlatformIcon(el.platform.id, colors.subtext, 12)
+              )}
           </View>
         </View>
       </View>
