@@ -2,7 +2,11 @@ import { useTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 
-import { GameDetailsScreen, SettingsScreen } from "../screens";
+import {
+  GameDetailsScreen,
+  GameScreenshotsScreen,
+  SettingsScreen,
+} from "../screens";
 import { AppStackParams } from "../types/navigation";
 import { AppTabs } from "./AppTabs";
 
@@ -24,6 +28,14 @@ export const AppStack = () => {
           headerTitle: route.params.title,
         })}
       />
+      <Stack.Screen
+        name="GameScreenshotsScreen"
+        component={GameScreenshotsScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.title,
+        })}
+      />
+
       <Stack.Screen
         name="SettingsScreen"
         component={SettingsScreen}

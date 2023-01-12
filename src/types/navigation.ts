@@ -10,6 +10,7 @@ export type AppTabsParams = {
 export type AppStackParams = {
   AppTabs: undefined;
   GameDetailsScreen: { id: number; title: string };
+  GameScreenshotsScreen: { id: number; title: string };
   SettingsScreen: undefined;
   SettingsThemeScreen: undefined;
   SettingsGenresScreen: undefined;

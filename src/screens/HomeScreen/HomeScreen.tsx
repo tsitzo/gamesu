@@ -78,16 +78,13 @@ const HomeScreen: FC<IHomeScreenProps> = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <View>
-          <Spacer y={20} />
-          <View style={styles.row}>
-            <Typography variant="bold" size={22}>
-              Popular
-            </Typography>
-            <Typography color="primary" size={16} onPress={() => {}}>
-              See More
-            </Typography>
-          </View>
+        <View style={styles.row}>
+          <Typography variant="bold" size={22}>
+            Popular
+          </Typography>
+          <Typography color="primary" size={16} onPress={() => {}}>
+            See More
+          </Typography>
         </View>
 
         <FlatList
@@ -111,16 +108,13 @@ const HomeScreen: FC<IHomeScreenProps> = ({ navigation }) => {
           )}
         />
 
-        <View>
-          <Spacer y={20} />
-          <View style={styles.row}>
-            <Typography variant="bold" size={22}>
-              New Releases
-            </Typography>
-            <Typography color="primary" size={16} onPress={() => {}}>
-              See More
-            </Typography>
-          </View>
+        <View style={styles.row}>
+          <Typography variant="bold" size={22}>
+            New Releases
+          </Typography>
+          <Typography color="primary" size={16} onPress={() => {}}>
+            See More
+          </Typography>
         </View>
 
         <FlatList

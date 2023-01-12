@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    width: Dimensions.get("screen").width - 30,
-    aspectRatio: 1.92 * 0.9,
+    width: Dimensions.get("screen").width - 20,
+    aspectRatio: 1.92 / 0.9,
   },
   row: {
     flexDirection: "row",

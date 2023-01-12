@@ -11,7 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { GameTile, SafeArea, Spacer, Typography } from "../../components";
+import {
+  GameTile,
+  NavigationTile,
+  SafeArea,
+  Spacer,
+  Typography,
+} from "../../components";
 import { Game, Video } from "../../types/api";
 import { AppStackParams } from "../../types/navigation";
 import { BASE_URL } from "../../utils/api";
@@ -72,8 +78,6 @@ const GameDetailsScreen: FC<IGameDetailsScreenProps> = ({
     fetchSimilarGames
   );
 
-  console.log(similarGames);
-
   if (isLoading)
     return (
       <SafeArea>
@@ -117,7 +121,19 @@ const GameDetailsScreen: FC<IGameDetailsScreenProps> = ({
         </View>
 
         <View style={styles.wrapper}>
-          <Typography>{game?.description_raw}</Typography>
+          <Typography size={14}>{game?.description_raw}</Typography>
+        </View>
+
+        <View style={styles.wrapper}>
+          <NavigationTile
+            onPress={() =>
+              navigation.push("GameScreenshotsScreen", {
+                id: game?.id!,
+                title: game?.name!,
+              })
+            }
+            label="Screenshots"
+          />
         </View>
 
         {similarGames && similarGames.results.length > 0 && (
@@ -129,7 +145,6 @@ const GameDetailsScreen: FC<IGameDetailsScreenProps> = ({
             </View>
 
             <FlatList
-              // contentContainerStyle={{ height: 200 }}
               horizontal
               data={similarGames?.results}
               renderItem={({ item, index }) => (
