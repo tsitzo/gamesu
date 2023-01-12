@@ -15,38 +15,19 @@ interface IGameTileProps {
 const GameTile: FC<IGameTileProps> = ({ game }) => {
   const { colors } = useTheme();
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   return (
-    <View style={styles.cardWrapper}>
-      <View style={styles.imageWrapper}>
-        {isLoading && (
-          <View
-            style={[styles.placeHolderImage, { backgroundColor: colors.card }]}
-          >
-            <ActivityIndicator color={colors.primary} />
-          </View>
-        )}
-        {game.background_image !== "" ? (
-          <Image
-            resizeMode="cover"
-            source={{
-              uri: game.background_image,
-            }}
-            style={styles.image}
-            onLoadStart={() => setIsLoading(true)}
-            onLoadEnd={() => setIsLoading(false)}
-          />
-        ) : (
-          <View
-            style={[styles.placeHolderImage, { backgroundColor: colors.card }]}
-          >
-            <ActivityIndicator color={colors.primary} />
-          </View>
-        )}
-      </View>
+    <View style={styles.coverWrapper}>
+      <Image
+        resizeMode="cover"
+        source={{
+          uri: game.background_image,
+        }}
+        style={styles.image}
+      />
+
       <Spacer y={10} />
-      <View>
+
+      <View style={{}}>
         <Typography numberOfLines={1} variant="bold">
           {game.name}
         </Typography>

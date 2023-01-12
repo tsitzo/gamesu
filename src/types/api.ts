@@ -1,18 +1,12 @@
-// export interface API {
-//   count: number;
-//   next: string;
-//   previous: null;
-//   results: Game[];
-//   seo_title: string;
-//   seo_description: string;
-//   seo_keywords: string;
-//   seo_h1: string;
-//   noindex: boolean;
-//   nofollow: boolean;
-//   description: string;
-//   filters: Filters;
-//   nofollow_collections: string[];
-// }
+export interface Video {
+  id: number;
+  name: string;
+  preview: string;
+  data: {
+    _480: string;
+    max: string;
+  };
+}
 
 export interface Game {
   id: number;
@@ -44,6 +38,7 @@ export interface Game {
   tags: Genre[];
   esrb_rating: EsrbRating;
   short_screenshots: ShortScreenshot[];
+  description_raw: string;
 }
 
 export interface AddedByStatus {

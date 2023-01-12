@@ -4,6 +4,7 @@ import {
   FlatList,
   ActivityIndicator,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { FC } from "react";
 
@@ -76,65 +77,73 @@ const HomeScreen: FC<IHomeScreenProps> = ({ navigation }) => {
 
   return (
     <SafeArea>
-      <View>
-        <Spacer y={20} />
-        <View style={styles.row}>
-          <Typography variant="bold" size={22}>
-            Popular
-          </Typography>
-          <Typography color="primary" size={16} onPress={() => {}}>
-            See More
-          </Typography>
+      <ScrollView>
+        <View>
+          <Spacer y={20} />
+          <View style={styles.row}>
+            <Typography variant="bold" size={22}>
+              Popular
+            </Typography>
+            <Typography color="primary" size={16} onPress={() => {}}>
+              See More
+            </Typography>
+          </View>
         </View>
-      </View>
 
-      <FlatList
-        horizontal
-        data={popularGames?.results}
-        renderItem={({ item, index }) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("GameDetailsScreen", { id: item.id })
-            }
-            style={[
-              styles.gameTileWrapper,
-              { marginLeft: index === 0 ? 10 : 0 },
-            ]}
-          >
-            <GameTile game={item} />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          horizontal
+          data={popularGames?.results}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.push("GameDetailsScreen", {
+                  id: item.id,
+                  title: item.name,
+                })
+              }
+              style={[
+                styles.gameTileWrapper,
+                { marginLeft: index === 0 ? 10 : 0 },
+              ]}
+            >
+              <GameTile game={item} />
+            </TouchableOpacity>
+          )}
+        />
 
-      <View>
-        <Spacer y={20} />
-        <View style={styles.row}>
-          <Typography variant="bold" size={22}>
-            New Releases
-          </Typography>
-          <Typography color="primary" size={16} onPress={() => {}}>
-            See More
-          </Typography>
+        <View>
+          <Spacer y={20} />
+          <View style={styles.row}>
+            <Typography variant="bold" size={22}>
+              New Releases
+            </Typography>
+            <Typography color="primary" size={16} onPress={() => {}}>
+              See More
+            </Typography>
+          </View>
         </View>
-      </View>
 
-      <FlatList
-        horizontal
-        data={newGames?.results}
-        renderItem={({ item, index }) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("GameDetailsScreen", { id: item.id })
-            }
-            style={[
-              styles.gameTileWrapper,
-              { marginLeft: index === 0 ? 10 : 0 },
-            ]}
-          >
-            <GameTile game={item} />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          horizontal
+          data={newGames?.results}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.push("GameDetailsScreen", {
+                  id: item.id,
+                  title: item.name,
+                })
+              }
+              style={[
+                styles.gameTileWrapper,
+                { marginLeft: index === 0 ? 10 : 0 },
+              ]}
+            >
+              <GameTile game={item} />
+            </TouchableOpacity>
+          )}
+        />
+      </ScrollView>
     </SafeArea>
   );
 };

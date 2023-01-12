@@ -17,7 +17,13 @@ export const AppStack = () => {
         component={AppTabs}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="GameDetailsScreen" component={GameDetailsScreen} />
+      <Stack.Screen
+        name="GameDetailsScreen"
+        component={GameDetailsScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.title,
+        })}
+      />
       <Stack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
